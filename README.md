@@ -1,4 +1,8 @@
-Phase-1-Project
+# Phase-1-Project
+
+Our Pokedex is a Single Page Application that will return the stats, data, and possible moveset of the desired Pokemon.
+
+## Functionality
 
 1. When the page loads the user gets a default picture with the Pokemon logo
 2. There is a input field under the logo where a user can input a certain name
@@ -14,7 +18,12 @@ Phase-1-Project
 specific stats of the Pokemon
 6. A mouse over event will be put when the User hovers over the image of the selected Pokemon which will pull up a Pokemon card of the specific pokemon showing its stats.
 
+
+## Sources
+
 THE API IS FROM https://pokeapi.co/api/v2/pokemon/
+
+Example API return:
 
 {abilities: Array(3), base_experience: 189, forms: Array(1), game_indices: Array(20), height: 21, …}
 abilities: (3) [{…}, {…}, {…}]
