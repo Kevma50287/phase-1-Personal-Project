@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <script defer src="index.js"></script>
     <title>Pokemon</title>
 </head>
-<body>
+<body id="body">
     <div id="pokemon">
-        <img id="pokemonImage">
-        <h1 id="name" class="stats">Pokémon</h1>
+        <img id="pokemonImage" src="https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png">
+        <h1 id="pokeName" class="stats">Pokémon</h1>
         <form class="form">
             <h3>Enter Pokémon Name</h3>
             <input type="text" name="name" placeholder="Pokémon"/>
@@ -37,7 +38,7 @@
         </p>
         <p class="statsText" id="abilityStatWord">
             Ability:
-            <span class="actualstats" id="abiltyStat"></span>
+            <span class="actualstats" id="abilityStat"></span>
         </p>
         <p class="statsText" id="typeStatWord">
             Type: 
