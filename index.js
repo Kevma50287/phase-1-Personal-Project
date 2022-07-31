@@ -10,6 +10,9 @@ let heightNode = document.getElementById('heightStat')
 let abilityNode = document.getElementById('abilityStat')
 let typeNode = document.getElementById('typeStat')
 let bodyNode = document.getElementById('body')
+let showMovesBtn = document.getElementById('showMovesBtn')
+let allMoves = document.getElementById('allMoves')
+let movelist = document.getElementById('movelist')
 
 
 
@@ -33,7 +36,7 @@ let dragonBackground = 'url(https://cdn.wallpapersafari.com/25/88/GvSHn1.jpg)'
 let steelBackground = 'url(https://wallpaper.dog/large/20442056.jpg)'
 let fairyBackground = 'url(https://wallpaperset.com/w/full/5/9/5/136134.jpg)'
 
-form.addEventListener('submit', function(e){
+form.addEventListener('submit', function (e) {
     e.preventDefault()
     pokemon = e.target.name.value
     console.log(pokemon)
@@ -41,18 +44,39 @@ form.addEventListener('submit', function(e){
     form.reset()
 })
 
+//Toggle full move list
+showMovesBtn.addEventListener('click', (e) => {
+    if (allMoves.style.display === 'none'){
+        allMoves.style.display = 'flex'
+    } else {allMoves.style.display = 'none'}
+})
 
 async function getPoke(obj) {
     let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${obj}`);
     let pokemon = await response.json();
-    let randomMoveGenerator = pokemon.moves[Math.floor(Math.random()*pokemon.moves.length)]
+
+    //added fullmove list and toggle button
+    let FullMoveList = pokemon.moves.map((element) => {
+        return element.move.name
+    })
+
+    movelist.innerHTML = ''
+    
+    FullMoveList.forEach(element => {
+        let li = document.createElement('li')
+        li.textContent = element
+        movelist.append(li)
+    });
+
+    let randomMoveGenerator = pokemon.moves[Math.floor(Math.random() * pokemon.moves.length)]
     pokemonImage.src = pokemon.sprites['front_default']
-    pokemonImage.addEventListener('mouseover', function(e){
+    pokemonImage.addEventListener('mouseover', function (e) {
         pokemonImage.src = pokemon.sprites['front_shiny']
     })
-    pokemonImage.addEventListener('click', function(e){
+    pokemonImage.addEventListener('click', function (e) {
         pokemonImage.src = pokemon.sprites['front_default']
     })
+
     moveNode.innerHTML = randomMoveGenerator.move.name
     weightNode.innerHTML = pokemon.weight
     heightNode.innerHTML = pokemon.height
@@ -60,63 +84,65 @@ async function getPoke(obj) {
     typeNode.innerHTML = pokemon.types[0].type.name
     nameNode.innerHTML = pokemon.name
     let typeBackground = typeNode.innerHTML
+
+
     //SWITCH STATEMENT FOR BACKGROUND COLOR ACCORDING TO POKEMON TYPE
-    switch(typeBackground){
+    switch (typeBackground) {
         case 'normal':
             bodyNode.style.backgroundImage = normalBackground
             break;
         case 'fire':
-                bodyNode.style.backgroundImage = fireBackground
+            bodyNode.style.backgroundImage = fireBackground
             break;
         case 'water':
-                bodyNode.style.backgroundImage = waterBackground
+            bodyNode.style.backgroundImage = waterBackground
             break;
         case 'grass':
-                bodyNode.style.backgroundImage = grassBackground
+            bodyNode.style.backgroundImage = grassBackground
             break;
         case 'electric':
-                bodyNode.style.backgroundImage = electricBackground
+            bodyNode.style.backgroundImage = electricBackground
             break;
         case 'ice':
-                bodyNode.style.backgroundImage = iceBackground
+            bodyNode.style.backgroundImage = iceBackground
             break;
         case 'fighting':
-                bodyNode.style.backgroundImage = fightingBackground
+            bodyNode.style.backgroundImage = fightingBackground
             break;
         case 'poison':
-                bodyNode.style.backgroundImage = poisonBackground
+            bodyNode.style.backgroundImage = poisonBackground
             break;
         case 'ground':
-                bodyNode.style.backgroundImage = groundBackground
+            bodyNode.style.backgroundImage = groundBackground
             break;
         case 'flying':
-                bodyNode.style.backgroundImage = flyBackground
+            bodyNode.style.backgroundImage = flyBackground
             break;
         case 'psychic':
-                bodyNode.style.backgroundImage = pshycicBackground
+            bodyNode.style.backgroundImage = pshycicBackground
             break;
         case 'bug':
-                bodyNode.style.backgroundImage = bugBackground
+            bodyNode.style.backgroundImage = bugBackground
             break;
         case 'rock':
-                bodyNode.style.backgroundImage = rockBackground
+            bodyNode.style.backgroundImage = rockBackground
             break;
         case 'ghost':
-                bodyNode.style.backgroundImage = ghostBackground
+            bodyNode.style.backgroundImage = ghostBackground
             break;
         case 'dark':
-                bodyNode.style.backgroundImage = darkBackground
+            bodyNode.style.backgroundImage = darkBackground
             break;
         case 'dragon':
-                bodyNode.style.backgroundImage = dragonBackground
+            bodyNode.style.backgroundImage = dragonBackground
             break;
         case 'steel':
-                bodyNode.style.backgroundImage = steelBackground
+            bodyNode.style.backgroundImage = steelBackground
             break;
         case 'fairy':
-                bodyNode.style.backgroundImage = fairyBackground
+            bodyNode.style.backgroundImage = fairyBackground
             break;
-        
-        }    // }
+
+    }    // }
 
 }

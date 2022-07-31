@@ -1,3 +1,62 @@
+*, ::after, ::before {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+/* pokemon API is case sensitive, restrict to lowercase */
 form input[type="text"] {
     text-transform: lowercase;
+}
+
+.addPadding {
+    padding:5px
+}
+
+.addMargin {
+    margin:5px
+}
+
+
+#statsDiv,
+#pokemon {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 20px 20px;
+}
+
+.frontlayer {
+    z-index: 1;
+    background: white;
+    border: 1px solid black;
+}
+
+#pokemon {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#pokemonImage {
+    width: 400px;
+    height: 400px;
+}
+
+#allMoves {
+    width: 100%
+}
+
+ul {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    margin: 0px auto;
+}
+
+#pokeName, #pokemon form {
+    width: 350px;
+    height: auto;
+    padding:10px
 }
