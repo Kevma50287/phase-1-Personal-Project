@@ -25,7 +25,9 @@ THE API IS FROM https://pokeapi.co/api/v2/pokemon/
 
 Example API return:
 
-{abilities: Array(3), base_experience: 189, forms: Array(1), game_indices: Array(20), height: 21, …}
+
+`
+{abilities: Array(3), base_experience: 189, forms: Array(1), game_indices: Array(20), height: 21, …} 
 abilities: (3) [{…}, {…}, {…}]
 base_experience: 189
 forms: [{…}]
@@ -45,4 +47,5 @@ stats: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
 types: [{…}]
 weight: 4600
 [[Prototype]]: Object
+`
 
