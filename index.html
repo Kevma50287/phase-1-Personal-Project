@@ -4,18 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <script defer src="index.js"></script>
     <title>Pokemon</title>
 </head>
-<body>
+<body id="body">
     <div id="pokemon">
-        <img id="pokemonImage">
-        <blockquote id="name"></blockquote>
-        <blockquote id="moveStat"></blockquote>
-        <blockquote id="weightStat"></blockquote>
-        <blockquote id="heightStat"></blockquote>
-        <blockquote id="abiltyStat"></blockquote>
-        <blockquote id="typeStat"></blockquote>
+        <img id="pokemonImage" src="https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png">
+        <h1 id="pokeName" class="stats">Pokémon</h1>
+        <form class="form">
+            <h3>Enter Pokémon Name</h3>
+            <input type="text" name="name" placeholder="Pokémon"/>
+            <input
+            type="submit"
+            name="submit"
+            value="Submit"
+            class="submit"
+            />
+        </form>
+        </div>
+        <div id="statsDiv">
+        <p class="statsText" id="moveStatWord">
+            Move: 
+            <span class="actualstats" id="moveStat"></span>
+        </p>
+        <p class="statsText" id="weightStatWord">
+            Weight: 
+            <span class="actualstats" id="weightStat"></span>
+        </p>
+        <p class="statsText" id="heighttStatWord">
+            Height: 
+            <span class="actualstats" id="heightStat"></span>
+        </p>
+        <p class="statsText" id="abilityStatWord">
+            Ability:
+            <span class="actualstats" id="abilityStat"></span>
+        </p>
+        <p class="statsText" id="typeStatWord">
+            Type: 
+            <span class="actualstats" id="typeStat"></span>
+        </p>
+
     </div>
 </body>
 </html>
