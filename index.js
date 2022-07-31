@@ -36,6 +36,7 @@ let dragonBackground = 'url(https://cdn.wallpapersafari.com/25/88/GvSHn1.jpg)'
 let steelBackground = 'url(https://wallpaper.dog/large/20442056.jpg)'
 let fairyBackground = 'url(https://wallpaperset.com/w/full/5/9/5/136134.jpg)'
 
+//Submit Function
 form.addEventListener('submit', function (e) {
     e.preventDefault()
     pokemon = e.target.name.value
@@ -59,15 +60,14 @@ async function getPoke(obj) {
     let FullMoveList = pokemon.moves.map((element) => {
         return element.move.name
     })
-
     movelist.innerHTML = ''
-    
     FullMoveList.forEach(element => {
         let li = document.createElement('li')
         li.textContent = element
         movelist.append(li)
     });
 
+    //set textcontent of divs
     let randomMoveGenerator = pokemon.moves[Math.floor(Math.random() * pokemon.moves.length)]
     pokemonImage.src = pokemon.sprites['front_default']
     pokemonImage.addEventListener('mouseover', function (e) {
@@ -76,7 +76,6 @@ async function getPoke(obj) {
     pokemonImage.addEventListener('click', function (e) {
         pokemonImage.src = pokemon.sprites['front_default']
     })
-
     moveNode.innerHTML = randomMoveGenerator.move.name
     weightNode.innerHTML = pokemon.weight
     heightNode.innerHTML = pokemon.height

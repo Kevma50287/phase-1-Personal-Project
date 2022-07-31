@@ -1,10 +1,9 @@
+/* standardize box-sizin for easier DOM styling */
 *, ::after, ::before {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
 }
-
-
 
 /* pokemon API is case sensitive, restrict to lowercase */
 form input[type="text"] {
@@ -27,6 +26,7 @@ form input[type="text"] {
     margin: 20px 20px;
 }
 
+/* ensures a white background to make text visible */
 .frontlayer {
     z-index: 1;
     background: white;
