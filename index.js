@@ -38,20 +38,29 @@ let darkBackground = 'url(https://images.alphacoders.com/294/thumb-1920-294453.j
 let dragonBackground = 'url(https://cdn.wallpapersafari.com/25/88/GvSHn1.jpg)'
 let steelBackground = 'url(https://wallpaper.dog/large/20442056.jpg)'
 let fairyBackground = 'url(https://wallpaperset.com/w/full/5/9/5/136134.jpg)'
-
 //Submit Function
 form.addEventListener('submit', async function (e) {
     e.preventDefault()
     let pokemon = e.target.name.value.toLowerCase()
     let pokeObj = await getPoke(pokemon)
     setupPage(pokeObj)
+    // console.log(error)
     form.reset()
 })
 
 //Async Fetch statement
 async function getPoke(name) {
-    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-    let pokemon = await response.json();
+    let pokemon;
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    .then(response => response.json())
+    .then(data=> pokemon = data)
+    .catch(error=> {
+        nameNode.innerHTML = 'Error Wrong Pokemon'
+        body.style.background = 'white'
+        pokemonImageDefault.src = 'https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png'
+        pokemonImageShiny.src = 'https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png'
+    })
+    // let error = response.catch((er)=> console.log(er))
     return pokemon
 }
 
@@ -91,10 +100,10 @@ showMovesBtn.addEventListener('click', (e) => {
 
 //setup page based on pokemon object
 const setupPage = (pokemon) => {
-    weightNode.innerHTML = pokemon.weight
-    heightNode.innerHTML = pokemon.height
-    abilityNode.innerHTML = pokemon.abilities[0].ability.name
-    typeNode.innerHTML = pokemon.types[0].type.name
+    weightNode.innerHTML = pokemon.weight + ' lbs'
+    heightNode.innerHTML = parseInt(pokemon.height) / 10 + ' m'
+    abilityNode.innerHTML = pokemon.abilities[0].ability.name.charAt(0).toUpperCase() + pokemon.abilities[0].ability.name.slice(1)
+    typeNode.innerHTML = pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)
     nameNode.innerHTML = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
     let typeBackground = typeNode.innerHTML
 
@@ -106,58 +115,58 @@ const setupPage = (pokemon) => {
 
     //SWITCH STATEMENT FOR BACKGROUND COLOR ACCORDING TO POKEMON TYPE
     switch (typeBackground) {
-        case 'normal':
+        case 'Normal':
             bodyNode.style.backgroundImage = normalBackground
             break;
-        case 'fire':
+        case 'Fire':
             bodyNode.style.backgroundImage = fireBackground
             break;
-        case 'water':
+        case 'Water':
             bodyNode.style.backgroundImage = waterBackground
             break;
-        case 'grass':
+        case 'Grass':
             bodyNode.style.backgroundImage = grassBackground
             break;
-        case 'electric':
+        case 'Electric':
             bodyNode.style.backgroundImage = electricBackground
             break;
-        case 'ice':
+        case 'Ice':
             bodyNode.style.backgroundImage = iceBackground
             break;
-        case 'fighting':
+        case 'Fighting':
             bodyNode.style.backgroundImage = fightingBackground
             break;
-        case 'poison':
+        case 'Poison':
             bodyNode.style.backgroundImage = poisonBackground
             break;
-        case 'ground':
+        case 'Ground':
             bodyNode.style.backgroundImage = groundBackground
             break;
-        case 'flying':
+        case 'Flying':
             bodyNode.style.backgroundImage = flyBackground
             break;
-        case 'psychic':
-            bodyNode.style.backgroundImage = pshycicBackground
+        case 'Psychic':
+            bodyNode.style.backgroundImage = psychicBackground
             break;
-        case 'bug':
+        case 'Bug':
             bodyNode.style.backgroundImage = bugBackground
             break;
-        case 'rock':
+        case 'Rock':
             bodyNode.style.backgroundImage = rockBackground
             break;
-        case 'ghost':
+        case 'Ghost':
             bodyNode.style.backgroundImage = ghostBackground
             break;
-        case 'dark':
+        case 'Dark':
             bodyNode.style.backgroundImage = darkBackground
             break;
-        case 'dragon':
+        case 'Dragon':
             bodyNode.style.backgroundImage = dragonBackground
             break;
-        case 'steel':
+        case 'Steel':
             bodyNode.style.backgroundImage = steelBackground
             break;
-        case 'fairy':
+        case 'Fairy':
             bodyNode.style.backgroundImage = fairyBackground
             break;
 
