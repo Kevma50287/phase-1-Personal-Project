@@ -1,6 +1,13 @@
 /* standardize box-sizin for easier DOM styling */
 #body {
     font-family: sans-serif;
+    background-color: white;
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: cover;
+    /* Resize the background image to cover the entire container */
 }
 
 *,

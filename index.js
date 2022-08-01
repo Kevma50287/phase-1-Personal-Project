@@ -81,10 +81,16 @@ async function getPoke(name) {
 }
 
 
-//Click function to reveal shiny
+//Click function to reveal shiny, or if in gameMode we go to the next image
 pokemonImageDefault.addEventListener('click', function (e) {
-    pokemonImageDefault.style.zIndex = 1
-    pokemonImageShiny.style.zIndex = 2
+    if (modename.textContent === 'Pokedex'){
+        pokemonImageDefault.style.zIndex = 1
+        pokemonImageShiny.style.zIndex = 2
+    } else {
+        gameSetup()
+        nameNode.textContent=''
+    }
+
 })
 
 //Click function to reveal default
@@ -181,6 +187,12 @@ const setupPage = (pokemon) => {
     setBackground(type)
 }
 
+const styleBackdrop = (input) => {
+    bodyNode.style.backgroundImage = input
+    bodyNode.style.backgroundRepeat = 'none'
+    bodyNode.style.backgroundSize = 'cover'
+    bodyNode.style.backgroundPosition = 'center'
+}
 const setBackground = (type) => {
     //SWITCH STATEMENT FOR BACKGROUND COLOR ACCORDING TO POKEMON 
     switch (type) {
