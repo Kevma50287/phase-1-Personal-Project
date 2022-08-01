@@ -1,6 +1,13 @@
 /* standardize box-sizin for easier DOM styling */
+html, body{
+    height: 100%;
+}
 #body {
     font-family: sans-serif;
+    background-color: white;
+    background-size: cover;
+    background-position: left top;
+
 }
 *, ::after, ::before {
     box-sizing: border-box;

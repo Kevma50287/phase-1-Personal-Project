@@ -14,7 +14,6 @@ let bodyNode = document.getElementById('body')
 let showMovesBtn = document.getElementById('showMovesBtn')
 let allMoves = document.getElementById('allMoves')
 let movelist = document.getElementById('movelist')
-let body = document.getElementById('body')
 
 
 
@@ -55,7 +54,7 @@ async function getPoke(name) {
     .then(data=> pokemon = data)
     .catch(error=> {
         nameNode.innerHTML = 'Error Wrong Pokemon'
-        body.style.background = 'white'
+        bodyNode.style.background = 'white'
         pokemonImageDefault.src = 'https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png'
         pokemonImageShiny.src = 'https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png'
     })
