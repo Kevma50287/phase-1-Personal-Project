@@ -49,3 +49,17 @@ weight: 4600
 [[Prototype]]: Object
 `
 
+
+# Bugfixes/Improvements
+As we progressed through the project, we encountered both inspiration for features and annoyance from bugs. The following represents a list of some of the bugs we encountered and how they were subsequently resolved.
+
+1. On wrong user-input, the screen would freeze and there was no response to notify the user. As a result we added an error message to notify users when a request to the API fails.
+
+2. Fix the flashing Pikachu. Originally we had a mouseover event listener to switch between shiny and default sprites. However, because several requests are being to the server on each hover, there may be a delay between switching sprites which allowed, for a brief second, the old sprite to be displayed. To correct this, we implemented a new solution of loading both sprites into two separate divs and overlaying them. Isntead of the mouseover, we used a click event to alter the z-index of the images, and alter what gets displaye on the surface
+3. Get rid of the random move and just have the move list: Just a minor improvement. No need to give them a random move if we are already providing the whole move list.
+
+# Stretch Goals
+1. What's that pokemon? Create a game mode to guess the pokemon the sprite represents
+2. Random Pokemon - For the pokemon game, get a random pokemon from the API
+3. Pokemon Bucket - Purely for aesthetics. In the pokemon game we'll create a bucket. Everytime a pokemon is guessed correctly, an animation will play that shows the pokemon dropping into the bucket from the top of the screen
+
