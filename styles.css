@@ -1,15 +1,6 @@
-/* standardize box-sizin for easier DOM styling */
-#body {
-    font-family: sans-serif;
-    background-color: white;
-    background-position: center;
-    /* Center the image */
-    background-repeat: no-repeat;
-    /* Do not repeat the image */
-    background-size: cover;
-    /* Resize the background image to cover the entire container */
-}
 
+
+/* standardize box-sizin for easier DOM styling */
 *,
 ::after,
 ::before {
@@ -19,6 +10,18 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#body {
+    font-family: sans-serif;
+    background-color: white;
+    /* Center the image */
+    background-position: center;
+    /* Do not repeat the image */
+    background-repeat: no-repeat;
+    /* Resize the background image to cover the entire container */
+    background-size: cover;
+}
+
+
 .addPadding {
     padding: 5px
 }
@@ -26,7 +29,6 @@
 .addMargin {
     margin: 5px
 }
-
 
 #statsDiv,
 #pokemon {
@@ -42,6 +44,7 @@
     max-width: 600px;
 }
 
+/* add functionality for smaller screen */
 @media only screen and (max-width: 620px) {
     #showMovesBtn {
         width: 100%;
@@ -56,14 +59,6 @@
     }
 }
 
-
-/* ensures a white background to make text visible */
-.frontlayer {
-    z-index: 1;
-    background: white;
-    border: 1px solid black;
-}
-
 #pokemon {
     align-items: center;
     justify-content: center;
@@ -73,6 +68,12 @@
 #allMoves {
     width: 100%
 }
+
+#statsDiv {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
 
 ul {
     display: flex;
@@ -88,14 +89,21 @@ ul {
     padding: 10px;
 }
 
-.rounded {
-    border-radius: 20px;
-}
 
 #pokemonImage-default,
 #pokemonImage-shiny {
     width: 400px;
     height: 400px;
+}
+
+#pokemonImage-default {
+    position: relative;
+    filter: drop-shadow(0 0 30px white);
+}
+
+#pokemonImage-shiny {
+    position: absolute;
+    top: 10px
 }
 
 #GuessContainer {
@@ -127,6 +135,7 @@ ul {
     border-radius: 20px;
 }
 
+/* alter between button styles */
 .pokedexstyle {
     border: 2px inset red;
     background: radial-gradient(rgb(255, 151, 151), rgb(255, 53, 53));
@@ -163,16 +172,7 @@ ul {
     background: radial-gradient(lavender, rgb(228, 1, 228));
 }
 
-#pokemonImage-default {
-    position: relative;
-    filter: drop-shadow(0 0 30px white);
-}
-
-#pokemonImage-shiny {
-    position: absolute;
-    top: 10px
-}
-
+/* formatting the form inputs */
 input[type=text] {
     padding: 5px;
     border: 2px solid #ccc;
@@ -196,6 +196,7 @@ input[type=submit]:hover {
     background: red;
 }
 
+/* generic classes to apply styling  */
 .fontSmall {
     font-size: 15px;
 }
@@ -205,7 +206,13 @@ input[type=submit]:hover {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-#statsDiv {
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+.rounded {
+    border-radius: 20px;
+}
+
+/* ensures a white background to make text visible */
+.frontlayer {
+    z-index: 1;
+    background: white;
+    border: 1px solid black;
 }

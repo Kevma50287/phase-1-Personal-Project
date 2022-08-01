@@ -1,4 +1,3 @@
-
 // ALL HTML NODES
 let pokemonDiv = document.getElementById('pokemon')
 let form = document.querySelector('.form')
@@ -88,7 +87,7 @@ pokemonImageDefault.addEventListener('click', function (e) {
         pokemonImageShiny.style.zIndex = 2
     } else {
         gameSetup()
-        nameNode.textContent=''
+        nameNode.textContent='Click image to reroll'
     }
 
 })
@@ -107,7 +106,7 @@ modeBtn.addEventListener('click', async function (e) {
         modeBtn.className = 'gamestyle'
         GuessContainer.style.display = 'block'
         statsDiv.style.display = 'none'
-        nameNode.textContent = ''
+        nameNode.textContent = 'Click image to reroll'
         nameNode.classList.remove('dexstyl2')
         nameNode.classList.add('gamestyl2')
         nameNode.classList.add('fontSmall')
@@ -146,6 +145,7 @@ const gameSetup = async () => {
     setBackground(type)
 }
 
+//function to generate a random number in a n interval
 const randomIntFromInterval = (min, max) => { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -160,7 +160,7 @@ showMovesBtn.addEventListener('click', (e) => {
 })
 
 
-//setup page based on pokemon object
+//Setup page based on pokemon object
 const setupPage = (pokemon) => {
     weightNode.innerHTML = pokemon.weight + ' lbs'
     heightNode.innerHTML = parseInt(pokemon.height) / 10 + ' m'
@@ -168,7 +168,7 @@ const setupPage = (pokemon) => {
     typeNode.innerHTML = pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)
     nameNode.innerHTML = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
     let type = typeNode.innerHTML
-    //set textcontent of divs
+    //Set textcontent of divs
     pokemonImageDefault.src = pokemon.sprites['front_default']
     pokemonImageShiny.src = pokemon.sprites['front_shiny']
     pokemonImageDefault.style.zIndex = 2
@@ -187,14 +187,9 @@ const setupPage = (pokemon) => {
     setBackground(type)
 }
 
-const styleBackdrop = (input) => {
-    bodyNode.style.backgroundImage = input
-    bodyNode.style.backgroundRepeat = 'none'
-    bodyNode.style.backgroundSize = 'cover'
-    bodyNode.style.backgroundPosition = 'center'
-}
+//SWITCH STATEMENT FOR BACKGROUND COLOR ACCORDING TO POKEMON
 const setBackground = (type) => {
-    //SWITCH STATEMENT FOR BACKGROUND COLOR ACCORDING TO POKEMON 
+     
     switch (type) {
         case 'Normal':
             bodyNode.style.backgroundImage = normalBackground
