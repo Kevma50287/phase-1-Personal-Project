@@ -6,9 +6,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* pokemon API is case sensitive, restrict to lowercase */
-
-
 .addPadding {
     padding:5px
 }
@@ -23,7 +20,8 @@
     display: flex;
     flex-flow: column nowrap;
     margin: 20px auto;
-    max-width: 600px
+    max-width: 600px;
+    width: 600px
 }
 
 /* ensures a white background to make text visible */
@@ -66,11 +64,54 @@ ul {
     filter: drop-shadow(0 0 20px white);
 }
 
+#GuessContainer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    text-align: center;
+    padding-top: 10px;
+    width: 150px;
+    height: 100px;
+    font-size: 20px;
+    border: 5px solid salmon;
+    border-radius: 10px;
+    background: radial-gradient(rgb(255, 211, 218), rgb(255, 163, 153));
+}
+
+#resetbtn {
+    margin-top: 5px;
+}
+
+/* switch styles between buttons */
+#mode {
+    width: 200px;
+    height: 50px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.pokedexstyle {
+    border: 2px inset red;
+    background: radial-gradient(rgb(255, 151, 151), rgb(255, 53, 53));
+    filter: brightness(150%);
+    color: black;
+}
+
+.gamestyle {
+    border: 2px inset rgb(87, 21, 194);
+    background: radial-gradient(rgb(140, 172, 223), rgb(124, 125, 223));
+    filter: brightness(150%);
+    color: rgb(29, 27, 27);
+}
+
+
+
 #pokemonImage-default {
-    position: relative;
+    position: relative;  
 }
 
 #pokemonImage-shiny {
-    position:absolute;
+    position: absolute;
     top: 20px
 }

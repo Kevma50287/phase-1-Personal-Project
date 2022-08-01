@@ -14,6 +14,8 @@ let bodyNode = document.getElementById('body')
 let showMovesBtn = document.getElementById('showMovesBtn')
 let allMoves = document.getElementById('allMoves')
 let movelist = document.getElementById('movelist')
+const modeBtn = document.getElementById('mode')
+
 
 
 
@@ -53,11 +55,11 @@ async function getPoke(name) {
     return pokemon
 }
 
-//Mouseover function to reveal shiny
+
+//Click function to reveal shiny
 pokemonImageDefault.addEventListener('click', function (e) {
     pokemonImageDefault.style.zIndex = 1 
     pokemonImageShiny.style.zIndex = 2
-    
 })
 
 //Click function to reveal default
@@ -65,6 +67,19 @@ pokemonImageShiny.addEventListener('click', function (e) {
     pokemonImageDefault.style.zIndex = 2 
     pokemonImageShiny.style.zIndex = 1
 })
+
+//Click function to switch between pokedex and game mode
+modeBtn.addEventListener('click', function (e) {
+    let modename = document.getElementById('modename')
+    if (modename.textContent === 'Pokedex'){
+        modename.textContent = 'Guess that Pokemon!'
+        modeBtn.className = 'gamestyle'
+    } else {
+        modename.textContent = 'Pokedex'
+        modeBtn.className = 'pokedexstyle'
+    }
+})
+
 
 //Toggle full move list
 showMovesBtn.addEventListener('click', (e) => {
@@ -86,6 +101,8 @@ const setupPage = (pokemon) => {
     //set textcontent of divs
     pokemonImageDefault.src = pokemon.sprites['front_default']
     pokemonImageShiny.src = pokemon.sprites['front_shiny']
+    pokemonImageDefault.style.zIndex = 2 
+    pokemonImageShiny.style.zIndex = 1
 
     //SWITCH STATEMENT FOR BACKGROUND COLOR ACCORDING TO POKEMON TYPE
     switch (typeBackground) {

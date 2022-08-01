@@ -11,11 +11,16 @@
 </head>
 
 <body id="body">
+    <div id="GuessContainer">
+        <p>Correct guesses: <span id="numCorrect">0</span></p>
+        <button id="resetbtn">Reset Counter</button>
+    </div>
     <div id="pokemon">
         <img id="pokemonImage-default" style="z-index: 2;"
             src="https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png">
         <img id="pokemonImage-shiny" style="z-index: 1;"
             src="https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png">
+        <button id="mode" class="pokedexstyle">Current Mode: <span id="modename">Pokedex</span></button>
         <h1 id="pokeName" class="stats frontlayer">Pokémon</h1>
         <form class="form frontlayer">
             <h3>Enter Pokémon Name</h3>
