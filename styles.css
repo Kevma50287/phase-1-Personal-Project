@@ -3,6 +3,7 @@
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* pokemon API is case sensitive, restrict to lowercase */
@@ -40,11 +41,6 @@ form input[type="text"] {
     text-align: center;
 }
 
-#pokemonImage {
-    width: 400px;
-    height: 400px;
-}
-
 #allMoves {
     width: 100%
 }
@@ -64,4 +60,19 @@ ul {
 
 .rounded {
     border-radius: 20px;
+}
+
+#pokemonImage-default, #pokemonImage-shiny {
+    width: 400px;
+    height: 400px;
+    filter: drop-shadow(0 0 20px white);
+}
+
+#pokemonImage-default {
+    position: relative;
+}
+
+#pokemonImage-shiny {
+    position:absolute;
+    top: 20px
 }

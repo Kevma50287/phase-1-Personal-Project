@@ -12,7 +12,9 @@
 
 <body id="body">
     <div id="pokemon">
-        <img id="pokemonImage"
+        <img id="pokemonImage-default" style="z-index: 2;"
+            src="https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png">
+        <img id="pokemonImage-shiny" style="z-index: 1;"
             src="https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png">
         <h1 id="pokeName" class="stats frontlayer">Pokémon</h1>
         <form class="form frontlayer">
@@ -22,10 +24,6 @@
         </form>
     </div>
     <div id="statsDiv" class="frontlayer">
-        <p class="statsText addMargin" id="moveStatWord">
-            Move:
-            <span class="actualstats" id="moveStat"></span>
-        </p>
         <p class="statsText addMargin" id="weightStatWord">
             Weight:
             <span class="actualstats" id="weightStat"></span>

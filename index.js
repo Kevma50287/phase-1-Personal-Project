@@ -3,7 +3,8 @@
 let pokemonDiv = document.getElementById('pokemon')
 let form = document.querySelector('.form')
 let nameNode = document.querySelector('#pokeName')
-let pokemonImage = document.getElementById('pokemonImage')
+let pokemonImageDefault = document.getElementById('pokemonImage-default')
+let pokemonImageShiny = document.getElementById('pokemonImage-shiny')
 let moveNode = document.getElementById('moveStat')
 let weightNode = document.getElementById('weightStat')
 let heightNode = document.getElementById('heightStat')
@@ -37,49 +38,45 @@ let steelBackground = 'url(https://wallpaper.dog/large/20442056.jpg)'
 let fairyBackground = 'url(https://wallpaperset.com/w/full/5/9/5/136134.jpg)'
 
 //Submit Function
-form.addEventListener('submit', function (e) {
+form.addEventListener('submit', async function (e) {
     e.preventDefault()
-    pokemon = e.target.name.value
-    console.log(pokemon)
-    getPoke(pokemon)
+    let pokemon = e.target.name.value
+    let pokeObj = await getPoke(pokemon)
+    setupPage(pokeObj)
+    console.log(pokemon, pokeObj)
     form.reset()
+})
+
+//Async Fetch statement
+async function getPoke(name) {
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    let pokemon = await response.json();
+    return pokemon
+}
+
+//Mouseover function to reveal shiny
+pokemonImageDefault.addEventListener('click', function (e) {
+    pokemonImageDefault.style.zIndex = 1 
+    pokemonImageShiny.style.zIndex = 2
+    
+})
+
+//Click function to reveal default
+pokemonImageShiny.addEventListener('click', function (e) {
+    pokemonImageDefault.style.zIndex = 2 
+    pokemonImageShiny.style.zIndex = 1
 })
 
 //Toggle full move list
 showMovesBtn.addEventListener('click', (e) => {
-    if (allMoves.style.display === 'none'){
+    if (allMoves.style.display === 'none') {
         allMoves.style.display = 'flex'
-    } else {allMoves.style.display = 'none'}
+    } else { allMoves.style.display = 'none' }
 })
 
-async function getPoke(obj) {
-    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${obj}`);
-    let pokemon = await response.json();
 
-    //added fullmove list and toggle button
-    let FullMoveList = pokemon.moves.map((element) => {
-        return element.move.name
-    })
-    movelist.innerHTML = ''
-    FullMoveList.forEach(element => {
-        let li = document.createElement('li')
-        li.textContent = element
-        movelist.append(li)
-    });
-
-    //set textcontent of divs
-    let randomMoveGenerator = pokemon.moves[Math.floor(Math.random() * pokemon.moves.length)]
-    pokemonImage.src = pokemon.sprites['front_default']
-    pokemonImage.addEventListener('mouseover', function (e) {
-        debugger
-        pokemonImage.src = pokemon.sprites['front_shiny']
-        debugger
-    })
-    pokemonImage.addEventListener('click', function (e) {
-        pokemonImage.src = pokemon.sprites['front_default']
-    })
-    
-    moveNode.innerHTML = randomMoveGenerator.move.name
+//setup page based on pokemon object
+const setupPage = (pokemon) => {
     weightNode.innerHTML = pokemon.weight
     heightNode.innerHTML = pokemon.height
     abilityNode.innerHTML = pokemon.abilities[0].ability.name
@@ -87,6 +84,9 @@ async function getPoke(obj) {
     nameNode.innerHTML = pokemon.name
     let typeBackground = typeNode.innerHTML
 
+    //set textcontent of divs
+    pokemonImageDefault.src = pokemon.sprites['front_default']
+    pokemonImageShiny.src = pokemon.sprites['front_shiny']
 
     //SWITCH STATEMENT FOR BACKGROUND COLOR ACCORDING TO POKEMON TYPE
     switch (typeBackground) {
@@ -145,6 +145,16 @@ async function getPoke(obj) {
             bodyNode.style.backgroundImage = fairyBackground
             break;
 
-    }    // }
+    }
 
+    //Added fullmove list and toggle button
+    let FullMoveList = pokemon.moves.map((element) => {
+        return element.move.name
+    })
+    movelist.innerHTML = ''
+    FullMoveList.forEach(element => {
+        let li = document.createElement('li')
+        li.textContent = element
+        movelist.append(li)
+    });
 }
