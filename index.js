@@ -20,7 +20,6 @@ const h3 = document.querySelector('h3')
 const score = document.getElementById('numCorrect')
 
 
-
 //ALL TYPE BACKGROUND IMAGES
 let normalBackground = 'url(https://pokemongohub.net/wp-content/uploads/2019/05/Normal-Types-1536x864.jpg)'
 let fireBackground = 'url(https://images.pexels.com/photos/207353/pexels-photo-207353.jpeg)'
@@ -130,7 +129,7 @@ modeBtn.addEventListener('click', async function (e) {
         pokemonImageDefault.src = 'https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png'
         pokemonImageDefault.style.filter=''
         h3.textContent = 'Enter Pokémon Name or Pokédex #'
-        body.style.background = 'white'
+        body.style.backgroundImage=''
     }
 })
 

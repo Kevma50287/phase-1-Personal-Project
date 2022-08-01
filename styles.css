@@ -10,17 +10,21 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#body {
+body {
     font-family: sans-serif;
-    background-color: white;
     /* Center the image */
     background-position: center;
     /* Do not repeat the image */
     background-repeat: no-repeat;
     /* Resize the background image to cover the entire container */
     background-size: cover;
+    
 }
 
+body, html {
+    margin:0;
+    height:100vh
+}
 
 .addPadding {
     padding: 5px
@@ -28,6 +32,13 @@
 
 .addMargin {
     margin: 5px
+}
+
+/* white background to make text visible */
+.frontlayer {
+    z-index: 1;
+    background: white;
+    border: 1px solid black;
 }
 
 #statsDiv,
@@ -210,9 +221,3 @@ input[type=submit]:hover {
     border-radius: 20px;
 }
 
-/* ensures a white background to make text visible */
-.frontlayer {
-    z-index: 1;
-    background: white;
-    border: 1px solid black;
-}
