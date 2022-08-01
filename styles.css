@@ -7,9 +7,7 @@
 }
 
 /* pokemon API is case sensitive, restrict to lowercase */
-form input[type="text"] {
-    text-transform: lowercase;
-}
+
 
 .addPadding {
     padding:5px

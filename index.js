@@ -40,10 +40,9 @@ let fairyBackground = 'url(https://wallpaperset.com/w/full/5/9/5/136134.jpg)'
 //Submit Function
 form.addEventListener('submit', async function (e) {
     e.preventDefault()
-    let pokemon = e.target.name.value
+    let pokemon = e.target.name.value.toLowerCase()
     let pokeObj = await getPoke(pokemon)
     setupPage(pokeObj)
-    console.log(pokemon, pokeObj)
     form.reset()
 })
 
@@ -81,7 +80,7 @@ const setupPage = (pokemon) => {
     heightNode.innerHTML = pokemon.height
     abilityNode.innerHTML = pokemon.abilities[0].ability.name
     typeNode.innerHTML = pokemon.types[0].type.name
-    nameNode.innerHTML = pokemon.name
+    nameNode.innerHTML = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
     let typeBackground = typeNode.innerHTML
 
     //set textcontent of divs
