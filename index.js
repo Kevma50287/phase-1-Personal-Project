@@ -71,11 +71,14 @@ async function getPoke(obj) {
     let randomMoveGenerator = pokemon.moves[Math.floor(Math.random() * pokemon.moves.length)]
     pokemonImage.src = pokemon.sprites['front_default']
     pokemonImage.addEventListener('mouseover', function (e) {
+        debugger
         pokemonImage.src = pokemon.sprites['front_shiny']
+        debugger
     })
     pokemonImage.addEventListener('click', function (e) {
         pokemonImage.src = pokemon.sprites['front_default']
     })
+    
     moveNode.innerHTML = randomMoveGenerator.move.name
     weightNode.innerHTML = pokemon.weight
     heightNode.innerHTML = pokemon.height

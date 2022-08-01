@@ -23,7 +23,8 @@ form input[type="text"] {
 #pokemon {
     display: flex;
     flex-flow: column nowrap;
-    margin: 20px 20px;
+    margin: 20px auto;
+    max-width: 600px
 }
 
 /* ensures a white background to make text visible */
@@ -59,4 +60,8 @@ ul {
     width: 350px;
     height: auto;
     padding:10px
+}
+
+.rounded {
+    border-radius: 20px;
 }
