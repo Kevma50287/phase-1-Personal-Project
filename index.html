@@ -17,13 +17,13 @@
     </div>
     <div id="pokemon">
         <img id="pokemonImage-default" style="z-index: 2;"
-            src="https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png">
+            src="https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png" loading="lazy">
         <img id="pokemonImage-shiny" style="z-index: 1;"
-            src="https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png">
+            src="https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png" loading="'lazy">
         <button id="mode" class="pokedexstyle">Current Mode: <span id="modename">Pokedex</span></button>
-        <h1 id="pokeName" class="stats frontlayer">Pokémon</h1>
-        <form class="form frontlayer">
-            <h3>Enter Pokémon Name</h3>
+        <h1 id="pokeName" class="stats frontlayer dexstyl2">Pokémon</h1>
+        <form class="form frontlayer dexstyl1">
+            <h3>Enter Pokémon Name or Pokédex #</h3>
             <input type="text" name="name" placeholder="Pokémon" />
             <input type="submit" name="submit" id="inputButton" value="Submit" class="submit" />
         </form>
@@ -46,7 +46,7 @@
             <span class="actualstats" id="typeStat"></span>
         </p>
         <button id="showMovesBtn" class="rounded">Click to see full move list</button>
-        <div id="allMoves" class="frontlayer" style="display:none;">
+        <div id="allMoves" style="display:none;">
             <ul id="movelist">
             </ul>
         </div>

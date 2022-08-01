@@ -2,7 +2,10 @@
 #body {
     font-family: sans-serif;
 }
-*, ::after, ::before {
+
+*,
+::after,
+::before {
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
@@ -10,11 +13,11 @@
 }
 
 .addPadding {
-    padding:5px
+    padding: 5px
 }
 
 .addMargin {
-    margin:5px
+    margin: 5px
 }
 
 
@@ -22,10 +25,30 @@
 #pokemon {
     display: flex;
     flex-flow: column nowrap;
-    margin: 20px auto;
+    margin: 10px auto;
     max-width: 600px;
     width: 600px
 }
+
+#showMovesBtn {
+    width: 600px;
+    max-width: 600px;
+}
+
+@media only screen and (max-width: 620px) {
+    #showMovesBtn {
+        width: 100%;
+        margin: 0px auto;
+        min-width: 300px;
+    }
+
+    #statsDiv,
+    #pokemon {
+        min-width: 300px;
+        width: auto
+    }
+}
+
 
 /* ensures a white background to make text visible */
 .frontlayer {
@@ -51,20 +74,21 @@ ul {
     margin: 0px auto;
 }
 
-#pokeName, #pokemon form {
+#pokeName,
+#pokemon form {
     width: 350px;
     height: auto;
-    padding:10px;
+    padding: 10px;
 }
 
 .rounded {
     border-radius: 20px;
 }
 
-#pokemonImage-default, #pokemonImage-shiny {
+#pokemonImage-default,
+#pokemonImage-shiny {
     width: 400px;
     height: 400px;
-    filter: drop-shadow(0 0 20px white);
 }
 
 #GuessContainer {
@@ -79,6 +103,7 @@ ul {
     border: 5px solid salmon;
     border-radius: 10px;
     background: radial-gradient(rgb(255, 211, 218), rgb(255, 163, 153));
+    display: none;
 }
 
 #resetbtn {
@@ -92,6 +117,7 @@ ul {
     margin-bottom: 10px;
     font-size: 15px;
     font-weight: bold;
+    border-radius: 20px;
 }
 
 .pokedexstyle {
@@ -108,45 +134,68 @@ ul {
     color: rgb(29, 27, 27);
 }
 
+/* pokedexstyle for divs */
+.dexstyl1 {
+    border-radius: 5px;
+    background-color: rgba(122, 119, 119, 75%);
+}
 
+.dexstyl2 {
+    border-radius: 5px;
+    background-color: rgba(242, 3, 3, 75%);
+}
+
+/* game style for divs */
+.gamestyl1 {
+    border-radius: 5px;
+    background: radial-gradient(skyblue, rgb(78, 61, 231));
+}
+
+.gamestyl2 {
+    border-radius: 5px;
+    background: radial-gradient(lavender, rgb(228, 1, 228));
+}
 
 #pokemonImage-default {
-    position: relative;  
+    position: relative;
+    filter: drop-shadow(0 0 30px white);
 }
 
 #pokemonImage-shiny {
     position: absolute;
-    top: 20px
+    top: 10px
 }
+
 input[type=text] {
-    padding:5px; 
-    border:2px solid #ccc; 
-    -webkit-border-radius: 5px;
+    padding: 5px;
+    border: 2px solid #ccc;
     border-radius: 5px;
 }
 
+/* focus represents an element that has beens selected through the cursor */
 input[type=text]:focus {
-    border-color:#333;
+    border-color: #333;
 }
 
 input[type=submit] {
-    padding:5px 15px; 
-    background:rgb(174, 237, 3); 
-    border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
+    padding: 5px 15px;
+    background: rgb(174, 237, 3);
+    border: 0 none;
+    cursor: pointer;
+    border-radius: 5px;
 }
+
 input[type=submit]:hover {
     background: red;
 }
-.form {
-    border-radius: 50%;
-    background-color:  rgba(122, 119, 119, 0.4);
+
+.fontSmall {
+    font-size: 15px;
 }
-#pokeName {
-    border-radius: 50%;
-    background-color: rgba(242, 3, 3, 0.4) ;
+
+.fontWrong {
+    font-size: 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 #statsDiv {
