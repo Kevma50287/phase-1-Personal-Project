@@ -246,3 +246,7 @@ input[type=submit]:hover {
 .transition {
     transition: all 500ms ease;
 }
+
+img {
+    -webkit-user-drag: none;
+}
