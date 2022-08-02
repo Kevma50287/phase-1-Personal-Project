@@ -18,6 +18,7 @@ const GuessContainer = document.getElementById('GuessContainer')
 const statsDiv = document.getElementById('statsDiv')
 const h3 = document.querySelector('h3')
 const score = document.getElementById('numCorrect')
+const inputBtn = document.getElementById('inputButton')
 
 
 //ALL TYPE BACKGROUND IMAGES
@@ -51,14 +52,18 @@ form.addEventListener('submit', async function (e) {
     } else if (modename.textContent === 'Guess that Pokemon!') {
         let guess = e.target.name.value.toLowerCase()
         if (guess === pokemonImageDefault.getAttribute('monName')) {
+            pokemonImageDefault.classList.add('transition')
             score.textContent = parseInt(score.textContent + 1)
-            pokemonImageDefault.style.filter=''
+            pokemonImageDefault.style.opacity = '0'
             nameNode.textContent = 'You got it! Click on the image to keep going :)'
+            inputBtn.disabled = true
         } else {
-            nameNode.innerHTML=`Wrong: It's 
+            pokemonImageDefault.classList.add('transition')
+            nameNode.innerHTML = `Wrong: It's 
                 <span class='fontWrong'>${pokemonImageDefault.getAttribute('monName')}</span>
                 . Click on the image to keep going :)`
-            pokemonImageDefault.style.filter=''
+            pokemonImageDefault.style.opacity = '0'
+            inputBtn.disabled = true
         }
         form.reset()
     }
@@ -81,63 +86,77 @@ async function getPoke(name) {
 
 //Click function to reveal shiny, or if in gameMode we go to the next image
 pokemonImageDefault.addEventListener('click', function (e) {
-    if (modename.textContent === 'Pokedex'){
-        pokemonImageDefault.style.zIndex = 1
-        pokemonImageDefault.style.visibility = 'hidden'
-        pokemonImageShiny.style.zIndex = 2
-        pokemonImageShiny.style.visibility = 'visible'
-        
+    if (modename.textContent === 'Pokedex') {
+        if (pokemonImageDefault.style.opacity === '0') {
+            pokemonImageDefault.style.opacity = '100'
+            pokemonImageShiny.style.opacity = '0'
+        } else {
+            pokemonImageDefault.style.opacity = '0'
+            pokemonImageShiny.style.opacity = '100'
+        };
     } else {
+        pokemonImageDefault.classList.remove('transition')
         gameSetup()
-        nameNode.textContent='Click image to reroll'
+        nameNode.textContent = 'Click image to reroll'
     }
-
 })
+
 
 //Click function to reveal default
 pokemonImageShiny.addEventListener('click', function (e) {
-    pokemonImageDefault.style.zIndex = 2
-    pokemonImageDefault.style.visibility = 'visible'
-    pokemonImageShiny.style.visibility = 'hidden'
-    pokemonImageShiny.style.zIndex = 1
+    pokemonImageDefault.style.opacity = '100'
+    pokemonImageShiny.style.opacity = '0'
 
 })
 
 //Click function to switch between pokedex and game mode
 modeBtn.addEventListener('click', async function (e) {
     let modename = document.getElementById('modename')
+    // Switch to game mode
     if (modename.textContent === 'Pokedex') {
-        modename.textContent = 'Guess that Pokemon!'
-        modeBtn.className = 'gamestyle'
-        GuessContainer.style.display = 'block'
-        statsDiv.style.display = 'none'
-        nameNode.textContent = 'Click image to reroll'
-        nameNode.classList.remove('dexstyl2')
-        nameNode.classList.add('gamestyl2')
-        nameNode.classList.add('fontSmall')
-        form.classList.remove('dexstyl1')
-        form.classList.add('gamestyl1')
-        pokemonImageShiny.style.display = 'none'
-        h3.textContent = 'Enter your guess here:'
+        Gameset()
         gameSetup()
-    } else {
-        modename.textContent = 'Pokedex'
-        modeBtn.className = 'pokedexstyle'
-        GuessContainer.style.display = 'none'
-        statsDiv.style.display = 'block'
-        nameNode.textContent = 'Pokémon'
-        nameNode.classList.add('dexstyl2')
-        nameNode.classList.remove('gamestyl2')
-        nameNode.classList.remove('fontSmall')
-        form.classList.add('dexstyl1')
-        form.classList.remove('gamestyl1')
-        pokemonImageShiny.style.display = 'block'
-        pokemonImageDefault.src = 'https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png'
-        pokemonImageDefault.style.filter=''
-        h3.textContent = 'Enter Pokémon Name or Pokédex #'
-        body.style.backgroundImage=''
+    } else { //Switch to Pokedex mode
+        Dexset()
     }
 })
+
+const Gameset = async () => {
+    modename.textContent = 'Guess that Pokemon!'
+    modeBtn.className = 'gamestyle'
+    GuessContainer.style.display = 'block'
+    statsDiv.style.display = 'none'
+    nameNode.textContent = 'Click image to reroll'
+    nameNode.classList.remove('dexstyl2')
+    nameNode.classList.add('gamestyl2')
+    nameNode.classList.add('fontSmall')
+    form.classList.remove('dexstyl1')
+    form.classList.add('gamestyl1')
+    h3.textContent = 'Enter your guess here:'
+}
+
+const Dexset = async () => {
+    modename.textContent = 'Pokedex'
+    modeBtn.className = 'pokedexstyle'
+    GuessContainer.style.display = 'none'
+    statsDiv.style.display = 'block'
+    nameNode.textContent = 'Pokémon'
+    nameNode.classList.add('dexstyl2')
+    nameNode.classList.remove('gamestyl2')
+    nameNode.classList.remove('fontSmall')
+    form.classList.add('dexstyl1')
+    form.classList.remove('gamestyl1')
+    pokemonImageShiny.style.display = 'block'
+    pokemonImageDefault.src = 'https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png'
+    pokemonImageShiny.src = pokemonImageDefault.src
+    pokemonImageDefault.style.filter=''
+    pokemonImageDefault.style.opacity = '100'
+    pokemonImageDefault.style.className = 'transition'
+    h3.textContent = 'Enter Pokémon Name or Pokédex #'
+    body.style.backgroundImage = ''
+    movelist.innerHTML = ''
+    inputBtn.disabled = false
+}
 
 //setup Game mode html
 const gameSetup = async () => {
@@ -145,10 +164,15 @@ const gameSetup = async () => {
     let pokemon = await res.json()
     pokemonImageDefault.src = await pokemon.sprites['front_default']
     pokemonImageDefault.setAttribute('monName', `${pokemon.name}`)
+    pokemonImageDefault.style.opacity = '100'
     pokemonImageDefault.style.filter = 'brightness(0) drop-shadow(0 0 30px white)'
+    pokemonImageShiny.src = pokemonImageDefault.src
+    pokemonImageShiny.style.opacity = '100'
     let type = pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)
     setBackground(type)
+    inputBtn.disabled = false
 }
+
 
 //function to generate a random number in a n interval
 const randomIntFromInterval = (min, max) => { // min and max included 
@@ -176,8 +200,6 @@ const setupPage = (pokemon) => {
     //Set textcontent of divs
     pokemonImageDefault.src = pokemon.sprites['front_default']
     pokemonImageShiny.src = pokemon.sprites['front_shiny']
-    pokemonImageDefault.style.zIndex = 2
-    pokemonImageShiny.style.zIndex = 1
 
     //Added fullmove list and toggle button
     let FullMoveList = pokemon.moves.map((element) => {
@@ -194,7 +216,7 @@ const setupPage = (pokemon) => {
 
 //SWITCH STATEMENT FOR BACKGROUND COLOR ACCORDING TO POKEMON
 const setBackground = (type) => {
-     
+
     switch (type) {
         case 'Normal':
             bodyNode.style.backgroundImage = normalBackground
