@@ -19,6 +19,7 @@ const statsDiv = document.getElementById('statsDiv')
 const h3 = document.querySelector('h3')
 const score = document.getElementById('numCorrect')
 const inputBtn = document.getElementById('inputButton')
+const resetbtn = document.getElementById('resetbtn')
 
 
 //ALL TYPE BACKGROUND IMAGES
@@ -83,6 +84,9 @@ async function getPoke(name) {
     }
 }
 
+resetbtn.addEventListener('click', () => {
+    score.textContent = 0
+})
 
 //Click function to reveal shiny, or if in gameMode we go to the next image
 pokemonImageDefault.addEventListener('click', function (e) {
@@ -106,7 +110,6 @@ pokemonImageDefault.addEventListener('click', function (e) {
 pokemonImageShiny.addEventListener('click', function (e) {
     pokemonImageDefault.style.opacity = '100'
     pokemonImageShiny.style.opacity = '0'
-
 })
 
 //Click function to switch between pokedex and game mode
@@ -121,7 +124,9 @@ modeBtn.addEventListener('click', async function (e) {
     }
 })
 
+//changes displays for game mode
 const Gameset = async () => {
+    pokemonImageDefault.style.className = ''
     modename.textContent = 'Guess that Pokemon!'
     modeBtn.className = 'gamestyle'
     GuessContainer.style.display = 'block'
@@ -135,6 +140,7 @@ const Gameset = async () => {
     h3.textContent = 'Enter your guess here:'
 }
 
+//changes displays for dex mode
 const Dexset = async () => {
     modename.textContent = 'Pokedex'
     modeBtn.className = 'pokedexstyle'
@@ -187,6 +193,7 @@ showMovesBtn.addEventListener('click', (e) => {
         allMoves.style.display = 'flex'
     } else { allMoves.style.display = 'none' }
 })
+
 
 
 //Setup page based on pokemon object
