@@ -34,7 +34,7 @@ let flyBackground = 'url(https://www.printawallpaper.com/wp-content/uploads/2020
 let psychicBackground = 'url(https://wallpaperaccess.com/full/2825357.png)'
 let bugBackground = 'url(https://wallpaperaccess.com/full/4407226.jpg)'
 let rockBackground = 'url(https://cdn.wallpapersafari.com/3/44/vhoKjl.jpg)'
-let ghostBackground = 'url(https://updatenaw.com/wp-content/uploads/2021/09/Ghost-Skulls-Halloween-Night-Wallpaper-for-iPhone.jpg)'
+let ghostBackground = 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLOssRymiXX3XKWd18pA1CJySELv4B7s1AUA&usqp=CAU)'
 let darkBackground = 'url(https://images.alphacoders.com/294/thumb-1920-294453.jpg)'
 let dragonBackground = 'url(https://cdn.wallpapersafari.com/25/88/GvSHn1.jpg)'
 let steelBackground = 'url(https://wallpaper.dog/large/20442056.jpg)'
@@ -72,7 +72,7 @@ async function getPoke(name) {
         return pokemon
     } catch (error) {
         nameNode.innerHTML = 'Error: Invalid Pokemon/Entry #'
-        body.style.background = 'white'
+        body.style.backgroundImage = ''
         pokemonImageDefault.src = 'https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png'
         pokemonImageShiny.src = 'https://www.albionpleiad.com/wp-content/uploads/2016/03/pokemon-logo-vector-400x381.png'
     }
@@ -83,7 +83,10 @@ async function getPoke(name) {
 pokemonImageDefault.addEventListener('click', function (e) {
     if (modename.textContent === 'Pokedex'){
         pokemonImageDefault.style.zIndex = 1
+        pokemonImageDefault.style.visibility = 'hidden'
         pokemonImageShiny.style.zIndex = 2
+        pokemonImageShiny.style.visibility = 'visible'
+        
     } else {
         gameSetup()
         nameNode.textContent='Click image to reroll'
@@ -94,7 +97,10 @@ pokemonImageDefault.addEventListener('click', function (e) {
 //Click function to reveal default
 pokemonImageShiny.addEventListener('click', function (e) {
     pokemonImageDefault.style.zIndex = 2
+    pokemonImageDefault.style.visibility = 'visible'
+    pokemonImageShiny.style.visibility = 'hidden'
     pokemonImageShiny.style.zIndex = 1
+
 })
 
 //Click function to switch between pokedex and game mode

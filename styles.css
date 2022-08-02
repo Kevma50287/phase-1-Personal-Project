@@ -10,7 +10,9 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* position absolute fixes body, which is the parent of all the divs, to one page. Any excess content beyond this page will have overflow applied */
 body {
+    position: absolute;
     font-family: sans-serif;
     /* Center the image */
     background-position: center;
@@ -18,12 +20,14 @@ body {
     background-repeat: no-repeat;
     /* Resize the background image to cover the entire container */
     background-size: cover;
-    
+    z-index: 0;
 }
 
+/* set the body and HTML to be the same as the window/screen */
 body, html {
     margin:0;
-    height:100vh
+    height:100%;
+    width:100%
 }
 
 .addPadding {
@@ -77,21 +81,32 @@ body, html {
 }
 
 #allMoves {
-    width: 100%
+    width: 100%;
+    overflow: scroll;
 }
 
 #statsDiv {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    max-height: 266px;
 }
 
 
+/* NOTE: Flexbox does not work well with overflow content. When content overflows the container, 
+overflow CSS will not work as the top portion and right portion of the content will be inaccessible, even through scrolling.
+There is no solution as of yet, but a quick workaround is to set the margins of the flex items instead of justifying and aligning content */
 ul {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
-    margin: 0px auto;
+    width: 100%;
+    /* justify-content: center; */
 }
+
+ul li {
+    margin: auto;
+}
+
+
 
 #pokeName,
 #pokemon form {
@@ -105,16 +120,18 @@ ul {
 #pokemonImage-shiny {
     width: 400px;
     height: 400px;
+    filter: drop-shadow(0 0 30px white);
 }
 
 #pokemonImage-default {
     position: relative;
-    filter: drop-shadow(0 0 30px white);
+    
 }
 
 #pokemonImage-shiny {
     position: absolute;
-    top: 10px
+    top: 10px;
+    visibility: hidden 
 }
 
 #GuessContainer {
