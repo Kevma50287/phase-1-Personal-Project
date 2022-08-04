@@ -42,6 +42,17 @@ let dragonBackground = 'url(https://cdn.wallpapersafari.com/25/88/GvSHn1.jpg)'
 let steelBackground = 'url(https://wallpaper.dog/large/20442056.jpg)'
 let fairyBackground = 'url(https://wallpaperset.com/w/full/5/9/5/136134.jpg)'
 
+
+// SWITCH SUBMIT BUTTON FOR YELLOW TO RED
+inputBtn.addEventListener('mouseover' , function(e){
+    inputBtn.style.backgroundColor = 'red'
+    inputBtn.addEventListener('mouseout', function(e){
+        inputBtn.style.backgroundColor = 'yellow'
+    })
+})
+
+
+
 //Submit Function - has two different functions depending on set mode
 form.addEventListener('submit', async function (e) {
     e.preventDefault()
@@ -55,7 +66,7 @@ form.addEventListener('submit', async function (e) {
         let guess = e.target.name.value.toLowerCase()
         if (guess === pokemonImageDefault.getAttribute('monName')) {
             pokemonImageDefault.classList.add('transition')
-            score.textContent = parseInt(score.textContent + 1)
+            score.textContent = parseInt(+score.textContent + 1)
             pokemonImageDefault.style.opacity = '0'
             nameNode.textContent = 'You got it! Click on the image to keep going :)'
             inputBtn.disabled = true
