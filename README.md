@@ -34,7 +34,7 @@ This image shows our Kanban board along with the necessary steps listed with cor
 specific stats of the Pokemon
 7. Clicking on the image of the Pokemon to switch between default and shiny forms.
 
-## Stretch Goal - Who's that Pokemon?
+#### Additional - Who's that Pokemon?
 8. FOR GAME MODE (Who's that Pokemon?): After clicking on the button to switch to game mode, a counter will appear in the top right corner to track the number of correct guesses, and a blocked out image of a random pokemon will be generated
 9. Background images still change to give hint to players as to the type of pokemon
 10. Submission to the form will now check if the inserted guess (not case-sensitive) matches the name of the pokemon. If correct, counter goes up one.
