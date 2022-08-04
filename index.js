@@ -42,15 +42,16 @@ let dragonBackground = 'url(https://cdn.wallpapersafari.com/25/88/GvSHn1.jpg)'
 let steelBackground = 'url(https://wallpaper.dog/large/20442056.jpg)'
 let fairyBackground = 'url(https://wallpaperset.com/w/full/5/9/5/136134.jpg)'
 
-//Submit Function
+//Submit Function - has two different functions depending on set mode
 form.addEventListener('submit', async function (e) {
     e.preventDefault()
+    // For Pokedex mode, we take the input and request it from the API
     if (modename.textContent === 'Pokedex') {
         let pokemon = e.target.name.value.toLowerCase()
         let pokeObj = await getPoke(pokemon)
         setupPage(pokeObj)
         form.reset()
-    } else if (modename.textContent === 'Guess that Pokemon!') {
+    } else if (modename.textContent === 'Guess that Pokemon!') { //Functionality for Game mode
         let guess = e.target.name.value.toLowerCase()
         if (guess === pokemonImageDefault.getAttribute('monName')) {
             pokemonImageDefault.classList.add('transition')
@@ -88,7 +89,7 @@ resetbtn.addEventListener('click', () => {
     score.textContent = 0
 })
 
-//Click function to reveal shiny, or if in gameMode we go to the next image
+//Click function to reveal shiny. IF in gameMode we go to the next image
 pokemonImageDefault.addEventListener('click', function (e) {
     if (modename.textContent === 'Pokedex') {
         if (pokemonImageDefault.style.opacity === '0') {
@@ -124,7 +125,7 @@ modeBtn.addEventListener('click', async function (e) {
     }
 })
 
-//changes displays for game mode
+// changes displays for game mode
 const Gameset = async () => {
     pokemonImageDefault.className = ''
     modename.textContent = 'Guess that Pokemon!'
@@ -140,7 +141,7 @@ const Gameset = async () => {
     h3.textContent = 'Enter your guess here:'
 }
 
-//changes displays for dex mode
+// changes displays for dex mode
 const Dexset = async () => {
     modename.textContent = 'Pokedex'
     modeBtn.className = 'pokedexstyle'
@@ -157,25 +158,29 @@ const Dexset = async () => {
     pokemonImageShiny.src = pokemonImageDefault.src
     pokemonImageDefault.style.filter=''
     pokemonImageDefault.style.opacity = '100'
-    pokemonImageDefault.style.className = 'transition'
+    pokemonImageDefault.className = 'transition'
     h3.textContent = 'Enter Pokémon Name or Pokédex #'
     body.style.backgroundImage = ''
     movelist.innerHTML = ''
     inputBtn.disabled = false
 }
 
-//setup Game mode html
+// setup Game mode html
 const gameSetup = async () => {
+    // get random pokemon
     let res = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomIntFromInterval(1, 905)}`)
     let pokemon = await res.json()
+    // change the default image(top-image) and turn it black
     pokemonImageDefault.src = await pokemon.sprites['front_default']
     pokemonImageDefault.setAttribute('monName', `${pokemon.name}`)
     pokemonImageDefault.style.opacity = '100'
     pokemonImageDefault.style.filter = 'brightness(0) drop-shadow(0 0 30px white)'
     pokemonImageShiny.src = pokemonImageDefault.src
     pokemonImageShiny.style.opacity = '100'
+    //titlecase name
     let type = pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)
     setBackground(type)
+    // enable input button
     inputBtn.disabled = false
 }
 
