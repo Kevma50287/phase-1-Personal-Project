@@ -126,7 +126,7 @@ modeBtn.addEventListener('click', async function (e) {
 
 //changes displays for game mode
 const Gameset = async () => {
-    pokemonImageDefault.style.className = ''
+    pokemonImageDefault.className = ''
     modename.textContent = 'Guess that Pokemon!'
     modeBtn.className = 'gamestyle'
     GuessContainer.style.display = 'block'

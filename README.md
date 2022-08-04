@@ -5,18 +5,24 @@ Our Pokedex is a Single Page Application that will return the stats, data, and p
 ## Functionality
 
 1. When the page loads the user gets a default picture with the Pokemon logo
-2. There is a input field under the logo where a user can input a certain name
-3. Under the input field will display a few stats of the certain pokemon
+2. There is button that switches the app from Pokedex mode (See #3. - #7.) to Game Mode (See #8. - #12.)
+3. There is a input field under the logo where a user can input a certain name
+4. Under the input field will display a few stats of the certain pokemon
         STATS
-        1. Random Move Generated
-        2. Weight Stat
-        3. Height Stat
-        4. Ability Stat
-        5. Type Stat
-4. When a certain Pokemon name is entered the html color of the background will be changed depending on the certain type stat of the Pokemon
-5. When a certain Pokemon name is entered the Pokemon logo in the middle will be changed to the picture of the Pokemon also the stats will be changed according to the 
+        1. Weight Stat
+        2. Height Stat
+        3. Ability Stat
+        4. Type Stat
+        5. Move List
+5. When a certain Pokemon name is entered the html color of the background will be changed depending on the certain type stat of the Pokemon
+6. When a certain Pokemon name is entered the Pokemon logo in the middle will be changed to the picture of the Pokemon. Also the stats will be changed according to the 
 specific stats of the Pokemon
-6. A mouse over event will be put when the User hovers over the image of the selected Pokemon which will pull up a Pokemon card of the specific pokemon showing its stats.
+7. Clicking on the image of the Pokemon to switch between default and shiny forms.
+8. FOR GAME MODE (Who's that Pokemon?): After clicking on the button to switch to game mode, a counter will appear in the top right corner to track the number of correct guesses, and a blocked out image of a random pokemon will be generated
+9. Background images still change to give hint to players as to the type of pokemon
+10. Submission to the form will now check if the inserted guess (not case-sensitive) matches the name of the pokemon. If correct, counter goes up one.
+11. Instead of displaying the pokemon name above the form, it will provide instructions on how to proceed with the game
+12. Clicking on the image of the pokemon will reroll the image
 
 
 ## Sources
@@ -56,6 +62,7 @@ As we progressed through the project, we encountered both inspiration for featur
 1. On wrong user-input, the screen would freeze and there was no response to notify the user. As a result we added an error message to notify users when a request to the API fails.
 
 2. Fix the flashing Pikachu. Originally we had a mouseover event listener to switch between shiny and default sprites. However, because several requests are being to the server on each hover, there may be a delay between switching sprites which allowed, for a brief second, the old sprite to be displayed. To correct this, we implemented a new solution of loading both sprites into two separate divs and overlaying them. Isntead of the mouseover, we used a click event to alter the z-index of the images, and alter what gets displaye on the surface
+
 3. Get rid of the random move and just have the move list: Just a minor improvement. No need to give them a random move if we are already providing the whole move list.
 
 # Stretch Goals
