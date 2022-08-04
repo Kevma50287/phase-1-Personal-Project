@@ -2,8 +2,23 @@
 
 Our Pokedex is a Single Page Application that will return the stats, data, and possible moveset of the desired Pokemon.
 
-## Functionality
+## Planning
+<img src="./images/Figma Screenshot.png" alt="Figma Screenshot" width="1200px" />
+<br>
+The image above shows the basic concept of how we intend the MVP to look.
+<br>
+<br>
+<img src="./images/Kanban Board.png" alt="Kanban" width="1200px" />
+<br>
+This image shows our Kanban board along with the necessary steps listed with corresponding due dates. Nested in each ticket are the tasks required to complete the ticket.
+<br>
+<br>
 
+---
+
+## Functionality (MVP Steps 1-7, Stretch Goals 8-12)
+
+#### MVP - Pokedex
 1. When the page loads the user gets a default picture with the Pokemon logo
 2. There is button that switches the app from Pokedex mode (See #3. - #7.) to Game Mode (See #8. - #12.)
 3. There is a input field under the logo where a user can input a certain name
@@ -18,12 +33,15 @@ Our Pokedex is a Single Page Application that will return the stats, data, and p
 6. When a certain Pokemon name is entered the Pokemon logo in the middle will be changed to the picture of the Pokemon. Also the stats will be changed according to the 
 specific stats of the Pokemon
 7. Clicking on the image of the Pokemon to switch between default and shiny forms.
+
+## Stretch Goal - Who's that Pokemon?
 8. FOR GAME MODE (Who's that Pokemon?): After clicking on the button to switch to game mode, a counter will appear in the top right corner to track the number of correct guesses, and a blocked out image of a random pokemon will be generated
 9. Background images still change to give hint to players as to the type of pokemon
 10. Submission to the form will now check if the inserted guess (not case-sensitive) matches the name of the pokemon. If correct, counter goes up one.
 11. Instead of displaying the pokemon name above the form, it will provide instructions on how to proceed with the game
 12. Clicking on the image of the pokemon will reroll the image
 
+---
 
 ## Sources
 
@@ -55,8 +73,9 @@ weight: 4600
 [[Prototype]]: Object
 `
 
+---
 
-# Bugfixes/Improvements
+## Bugfixes/Improvements
 As we progressed through the project, we encountered both inspiration for features and annoyance from bugs. The following represents a list of some of the bugs we encountered and how they were subsequently resolved.
 
 1. On wrong user-input, the screen would freeze and there was no response to notify the user. As a result we added an error message to notify users when a request to the API fails.
@@ -65,7 +84,9 @@ As we progressed through the project, we encountered both inspiration for featur
 
 3. Get rid of the random move and just have the move list: Just a minor improvement. No need to give them a random move if we are already providing the whole move list.
 
-# Stretch Goals
+---
+
+## Stretch Goals
 1. What's that pokemon? Create a game mode to guess the pokemon the sprite represents
 2. Random Pokemon - For the pokemon game, get a random pokemon from the API
 3. Pokemon Bucket - Purely for aesthetics. In the pokemon game we'll create a bucket. Everytime a pokemon is guessed correctly, an animation will play that shows the pokemon dropping into the bucket from the top of the screen
